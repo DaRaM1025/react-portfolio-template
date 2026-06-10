@@ -1,44 +1,47 @@
 import React from "react";
 import '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact, faDocker, faPython } from '@fortawesome/free-brands-svg-icons';
+import { faJava, faDocker } from '@fortawesome/free-brands-svg-icons';
+import { faCubes } from '@fortawesome/free-solid-svg-icons';
 import Chip from '@mui/material/Chip';
 import '../assets/styles/Expertise.scss';
 
 const labelsFirst = [
-    "React",
-    "TypeScript",
-    "JavaScript",
-    "HTML5",
-    "CSS3",
-    "SASS",
-    "Flask",
-    "Python",
-    "SQL",
-    "PostgreSQL",
-    "Postman"
+    "Java",
+    "Spring Boot",
+    "Spring Cloud",
+    "Spring Security",
+    "Microservices",
+    "API-First Design",
+    "REST APIs",
+    "Maven",
+    "SOLID Principles",
+    "Design Patterns"
 ];
 
 const labelsSecond = [
-    "Git",
-    "GitHub Actions",
     "Docker",
-    "AWS",
-    "Azure",
+    "Kubernetes",
     "Linux",
-    "Snowflake",
-    "Pandas",
-    "Selenium",
+    "Bash",
+    "GitHub Actions",
+    "CI/CD Pipelines",
+    "SonarCloud",
+    "Infrastructure as Code",
+    "Systems Administration"
 ];
 
 const labelsThird = [
-    "OpenAI",
-    "Groq",
-    "LangChain",
-    "Qdrant",
-    "Hugging Face",
-    "LlamaIndex",
-    "Streamlit",
+    "MongoDB",
+    "MySQL",
+    "PostgreSQL",
+    "Oracle",
+    "PL/SQL",
+    "RabbitMQ",
+    "Apache Kafka",
+    "Event-Driven Architecture",
+    "Polyglot Persistence",
+    "BPMN"
 ];
 
 function Expertise() {
@@ -48,9 +51,9 @@ function Expertise() {
             <h1>Expertise</h1>
             <div className="skills-grid">
                 <div className="skill">
-                    <FontAwesomeIcon icon={faReact} size="3x"/>
-                    <h3>Full Stack Web Development</h3>
-                    <p>I have built a diverse array of web applications from scratch using modern technologies such as React and Flask. I have a strong proficiency in the SDLC process and frontend + backend development.</p>
+                    <FontAwesomeIcon icon={faJava} size="3x"/>
+                    <h3>Backend & Microservices</h3>
+                    <p>I specialize in building scalable, resilient microservices using Java and Spring Boot. My focus is on service-based architecture, API-first design, and implementing SOLID principles with comprehensive architectural documentation (UML, C4, ADRs).</p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
                         {labelsFirst.map((label, index) => (
@@ -61,8 +64,8 @@ function Expertise() {
 
                 <div className="skill">
                     <FontAwesomeIcon icon={faDocker} size="3x"/>
-                    <h3>DevOps & Automation</h3>
-                    <p>Once the application is built, I help clients set up DevOps testing, CI/CD pipelines, and deployment automation to support the successful Go-Live.</p>
+                    <h3>Infrastructure & DevOps</h3>
+                    <p>I design and implement containerized infrastructures using Docker and Kubernetes. Proficient in Linux systems administration, CI/CD automation with GitHub Actions, and infrastructure-as-code principles for production-grade deployments.</p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
                         {labelsSecond.map((label, index) => (
@@ -72,9 +75,9 @@ function Expertise() {
                 </div>
 
                 <div className="skill">
-                    <FontAwesomeIcon icon={faPython} size="3x"/>
-                    <h3>GenAI & LLM</h3>
-                    <p>Stay relevant in the market by leveraging the latest AI models in your projects. I have professional experience building enterprise grade GenAI-enabled solutions to empower intelligent decision making.</p>
+                    <FontAwesomeIcon icon={faCubes} size="3x"/>
+                    <h3>Database & Event-Driven Architecture</h3>
+                    <p>Expert in polyglot persistence strategies, combining SQL and NoSQL databases. Implementing Event-Driven Architecture (EDA) with RabbitMQ and Apache Kafka for asynchronous, scalable systems with strong consistency models.</p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
                         {labelsThird.map((label, index) => (

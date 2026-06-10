@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import '../assets/styles/Contact.scss';
-// import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
@@ -15,6 +15,8 @@ function Contact() {
   const [nameError, setNameError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
   const [messageError, setMessageError] = useState<boolean>(false);
+  const [feedbackMessage, setFeedbackMessage] = useState<string>('');
+  const [feedbackType, setFeedbackType] = useState<'success' | 'error' | ''>('');
 
   const form = useRef();
 
@@ -25,28 +27,32 @@ function Contact() {
     setEmailError(email === '');
     setMessageError(message === '');
 
-    /* Uncomment below if you want to enable the emailJS */
+    if (name !== '' && email !== '' && message !== '') {
+      var templateParams = {
+        name: name,
+        email: email,
+        message: message,
+        to_email: 'davidsanty.ramireza@gmail.com'
+      };
 
-    // if (name !== '' && email !== '' && message !== '') {
-    //   var templateParams = {
-    //     name: name,
-    //     email: email,
-    //     message: message
-    //   };
-
-    //   console.log(templateParams);
-    //   emailjs.send('service_id', 'template_id', templateParams, 'api_key').then(
-    //     (response) => {
-    //       console.log('SUCCESS!', response.status, response.text);
-    //     },
-    //     (error) => {
-    //       console.log('FAILED...', error);
-    //     },
-    //   );
-    //   setName('');
-    //   setEmail('');
-    //   setMessage('');
-    // }
+      emailjs.send('service_tkgnmjg', 'template_dlbu1iy', templateParams, 'vQHk273SATGljuBeC').then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          setFeedbackMessage('Message sent successfully! I will get back to you soon.');
+          setFeedbackType('success');
+          setName('');
+          setEmail('');
+          setMessage('');
+          setTimeout(() => setFeedbackMessage(''), 5000);
+        },
+        (error) => {
+          console.log('FAILED...', error);
+          setFeedbackMessage('Failed to send message. Please try again.');
+          setFeedbackType('error');
+          setTimeout(() => setFeedbackMessage(''), 5000);
+        }
+      );
+    }
   };
 
   return (
@@ -106,6 +112,11 @@ function Contact() {
             <Button variant="contained" endIcon={<SendIcon />} onClick={sendEmail}>
               Send
             </Button>
+            {feedbackMessage && (
+              <div className={`feedback-message ${feedbackType}`}>
+                {feedbackMessage}
+              </div>
+            )}
           </Box>
         </div>
       </div>
